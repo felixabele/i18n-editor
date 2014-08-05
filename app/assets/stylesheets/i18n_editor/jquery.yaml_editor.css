@@ -1,0 +1,29 @@
+.yaml-data {
+  list-style: none;}
+.yaml-data i {
+  color: #BDBDBD; 
+  font-style: normal;
+  padding-right: 10px;}
+.yaml-editor {
+  position: relative;
+}
+.yaml-row-active {
+  background-color: #D8D8D8;
+  padding: 6px 4px; }
+.yaml-row-active i {
+  color: #585858;}
+.yaml-row-active #yaml_editor_value {
+  padding: 0 3px; margin-left: 10px;
+}
+.yaml-row .yaml-key { color: #0431B4}
+.yaml-row .yaml-value { color: #088A08}
+.yaml-comment { color: #6E6E6E; }
+.yaml-indent-1 { margin-right: 10px}
+.yaml-indent-2 { margin-right: 20px}
+.yaml-indent-3 { margin-right: 30px}
+.yaml-indent-4 { margin-right: 40px}
+.yaml-indent-5 { margin-right: 50px}
+.yaml-indent-6 { margin-right: 60px}
+.yaml-indent-7 { margin-right: 70px}
+.yaml-indent-8 { margin-right: 80px}
+.yaml-indent-9 { margin-right: 90px}

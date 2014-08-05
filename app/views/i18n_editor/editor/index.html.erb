@@ -1,0 +1,9 @@
+<h1>I18n Editor</h1>
+
+<%= select_tag "locale", options_for_select( @available_locales, @locale.code ), class: 'locale-select' %>
+
+<div id="locale_git_commit">
+  <%= button_to "Push via Git", push_to_git_locale_path( locale: @locale.code ), method: 'put', remote: true %>
+</div>
+
+<div id="yaml" class="locale-data"><%= @locale.raw_data %></div>

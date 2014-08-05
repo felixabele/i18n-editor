@@ -1,0 +1,3 @@
+= I18nEditor
+
+This project rocks and uses MIT-LICENSE.
