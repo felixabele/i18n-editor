@@ -62,7 +62,8 @@
     // --- loop through all rows of a yaml file and parse the data
     var process = function() {
       var rows    = plugin.yaml.split(/\r\n|\r|\n/g),
-        row_count = rows.length;
+        row_count = rows.length,
+        $last_row;
       $element.addClass('yaml-data');
 
       for(var i=0; i<row_count; i++) {
@@ -70,8 +71,12 @@
         var yaml_obj = yamlExcerpt(row, i);
         if ((yaml_obj.key != "") && (!yaml_obj.is_commented)) {
           yaml_obj.key_chain = currentKeyChain( yaml_obj.indent, yaml_obj.key ).join('.');
+          $last_row = rowHighlighter( yaml_obj );
+          $element.append( $last_row );          
+        } else if ((yaml_obj.key == '') && ($last_row)) {
+          $last_row.find('.yaml-value').append( " "+ encodeHTML( yaml_obj.value ) );
+          $last_row.data('value', $last_row.data('value') +' '+ yaml_obj.value);
         }
-        $element.append( rowHighlighter( yaml_obj ) );
       }
     }
 
@@ -124,6 +129,9 @@
       // empty row
       if (data.key == '') {
         $row.html("<i>"+ data.line_nb +"</i>");
+        
+        //$row.addClass('yaml-row');
+        //$row.html("<i class='yaml-indent-"+ data.indent +"'>"+ data.line_nb +"</i> <span class='yaml-value'>"+ encodeHTML( data.value ) +"</span>");
 
       // row with value
       } else {
