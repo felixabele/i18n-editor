@@ -26,11 +26,11 @@ $(function() {
   // Push to Git
   $locale_form
     .bind('ajax:send', function() {
-      $locale_form_submit.val( 'Start: Git Commit' );  
+      $locale_form_submit.val( 'Start: Git Commit' );
     })
     .bind('ajax:success', function(evt, data){
       $locale_form_submit.val( data.success ? 'Successfully pushed to Git' : 'Error on Git push' );
-  });  
+  });
 
   $('#yaml').yamlEditor({
     onSave: function( row, val ) {
@@ -40,13 +40,13 @@ $(function() {
         data: {
           key_chain: row.data()['key_chain'],
           value: val}
-      }).done(function( data ) { 
+      }).done(function( data ) {
         if( data['success'] ) {
           row.find('.yaml-value').html( val );
           row.data( 'value', val );
         }
-      });      
+      });
     }
   });
-  
+
 });

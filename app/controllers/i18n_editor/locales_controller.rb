@@ -11,7 +11,7 @@ module I18nEditor
 
     def show
       render json: @locale.data
-    end 
+    end
 
     def update
       @locale.update_value( params[:key_chain], params[:value] )
@@ -20,12 +20,12 @@ module I18nEditor
 
     def push_to_git
       render json: {success: @locale.push_to_git}
-    end    
+    end
 
-    private 
+    private
 
     def load_locale
-      @locale = Locale.new( params[:locale] || params[:id] ) 
+      @locale = Locale.new( params[:locale] || params[:id] )
     end
   end
 end

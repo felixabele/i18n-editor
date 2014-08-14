@@ -38,7 +38,7 @@
       plugin.settings = $.extend({}, defaults, options);
       plugin.element = $element;
 
-      // overwrite these preset values with html-5 data-attributes 
+      // overwrite these preset values with html-5 data-attributes
       plugin.settings = $.extend({}, plugin.settings, plugin.element.data());
       plugin.yaml = $element.html();
       $element.html('');
@@ -58,13 +58,13 @@
     // ----------------------------------------
     //   Private Methods
     // ----------------------------------------
-    
+
     // --- loop through all rows of a yaml file and parse the data
     var process = function() {
       var rows    = plugin.yaml.split(/\r\n|\r|\n/g),
         row_count = rows.length;
       $element.addClass('yaml-data');
-      
+
       for(var i=0; i<row_count; i++) {
         var row = rows[i];
         var yaml_obj = yamlExcerpt(row, i);
@@ -97,17 +97,17 @@
     }
 
     // --- build current keychain
-    var currentKeyChain = function( index, key ) {      
+    var currentKeyChain = function( index, key ) {
       if (this.current_indent == index) {
         this.key_chain.pop();
         this.key_chain.push( key );
-      } else if (this.current_indent < index) {            
+      } else if (this.current_indent < index) {
         this.key_chain.push( key );
       } else if (this.current_indent > index) {
-        this.key_chain.splice( index );           
+        this.key_chain.splice( index );
         this.key_chain.push( key );
-      }        
-      this.current_indent = index;        
+      }
+      this.current_indent = index;
       return this.key_chain;
     }
 
@@ -119,7 +119,7 @@
     // --- highlight yaml row with html markup
     //    @params: {'key': key, 'value': value, 'line_nb': 12, 'indent': 2, 'is_commented': true, 'key_chain': ''}
     var rowHighlighter = function( data ) {
-      var $row = $('<li/>', {data: data, id: data.key_chain.replace('.', '_')});          
+      var $row = $('<li/>', {data: data, id: data.key_chain.replace('.', '_')});
 
       // empty row
       if (data.key == '') {
@@ -147,13 +147,13 @@
       return $edit_form;
     }
 
-    // --- edit the selected row with the editor 
-    var editRow = function() {      
+    // --- edit the selected row with the editor
+    var editRow = function() {
       var data = $(this).data();
       if (!$(this).hasClass('yaml-row-active') && (data.value != '') ) {
-        plugin.current_row = $(this);        
+        plugin.current_row = $(this);
         $element.find('.yaml-row-active').removeClass('yaml-row-active');
-        plugin.current_row.addClass('yaml-row-active');      
+        plugin.current_row.addClass('yaml-row-active');
         plugin.edit_form.find('#yaml_editor_key').html( data.key_chain );
         plugin.edit_form.find('#yaml_editor_value').val( data.value );
         plugin.edit_form.detach().appendTo( $(this) ).show();
@@ -166,19 +166,19 @@
       //if (plugin.settings.onSave( plugin.current_row.data() )) {
       //  plugin.current_row.find('.yaml-value').html( val );
       //  plugin.current_row.data( 'value', val );
-      //}      
+      //}
     }
 
     // Start
     plugin.init();
-  }      
+  }
 
   // add the plugin to the jQuery.fn object
   $.fn.yamlEditor = function(options) {
     return this.each(function() {
       if (undefined == $(this).data('yamlEditor')) {
         var plugin = new $.yamlEditor(this, options);
-        $(this).data('yamlEditor', plugin);        
+        $(this).data('yamlEditor', plugin);
       }
     });
   }

@@ -24,10 +24,9 @@ module I18nEditor
           f.write @data.to_yaml
         end
         I18n.backend.reload!
-        commit_to_git!
         return true
       rescue Exception => e
-        @errors = e
+        @errors = e.to_s
         return false
       end
     end

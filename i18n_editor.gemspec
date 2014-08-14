@@ -7,11 +7,11 @@ require "i18n_editor/version"
 Gem::Specification.new do |s|
   s.name        = "i18n_editor"
   s.version     = I18nEditor::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of I18nEditor."
-  s.description = "TODO: Description of I18nEditor."
+  s.authors     = ["Felix Abele"]
+  s.email       = ["felix.abele@gmail.com"]
+  s.homepage    = "felix-abele.de"
+  s.summary     = "Editor for editing and managing i18n-locals."
+  s.description = "edit and Manage i18n-locals in production mode."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
