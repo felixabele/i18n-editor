@@ -20,8 +20,8 @@ module I18nEditor
 
     def save
       begin
-        File.open(@file_path,'w') do |f| 
-          f.write @data.to_yaml
+        File.open(@file_path,'w') do |f|
+          f.write @data.to_yaml( :UseFold => false )
         end
         I18n.backend.reload!
         return true
