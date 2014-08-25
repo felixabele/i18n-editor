@@ -33,7 +33,8 @@ module I18nEditor
 
     def push_to_git
       msg = "I18nEditor locale copy update of #{@code}"
-      system("git add #{@file_path}") && system("git commit -m '#{msg}'") && system("git push")
+      do_checkkout = (I18nEditor.configuration.git_repository.nil? || Rails.env.test? || Rails.env.development?) ? true : system("git checkout #{I18nEditor.configuration.git_repository}")
+      do_checkkout && system("git add #{@file_path}") && system("git commit -m '#{msg}'") && system("git push")
     end
 
     def self.all
