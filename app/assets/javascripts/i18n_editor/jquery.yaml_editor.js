@@ -1,6 +1,4 @@
-// jQuery toggle-Tags-Plugin
-// its supposed to be the most simle jQuery Slider on earth
-// version 0.1, 1708.06.2012
+// jQuery simple Yaml Editor
 // by Felix Abele
 
 (function($) {
